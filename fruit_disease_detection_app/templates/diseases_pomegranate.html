@@ -1,0 +1,321 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+<title>FruitWise - Detect Diagnose Defend</title>
+
+<!-- Bootstrap core CSS -->
+<link href="{% static 'fruit_disease_detection_app/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+<link rel="icon" type="image/x-icon" href="{% static 'fruit_disease_detection_app/images/favicon.ico' %}">
+
+
+<!-- Additional CSS Files -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'fruit_disease_detection_app/assets/css/main.css' %}">
+<link rel="stylesheet" href="{% static 'fruit_disease_detection_app/assets/css/animated.css' %}">
+<link rel="stylesheet" href="{% static 'fruit_disease_detection_app/assets/css/owl.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Handlee&family=Patrick+Hand+SC&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100..900&display=swap" rel="stylesheet">
+<style>
+    .faq-item{
+        margin-bottom:20px;
+    }
+    .faq h3{
+        text-align: center;
+        text-decoration:underline;
+        color:#a30c0c;
+        font-family: "Grenze Gotisch", serif;
+        font-optical-sizing: auto;
+        font-size:45px;
+        font-style: normal;
+    }
+    .faq .subheading {
+        text-align: center;
+        color:#a30c0c;
+        font-family: "Grenze Gotisch", serif;
+        font-optical-sizing: auto;
+        font-size:25px;
+        font-style: normal;
+    }
+    .faq li{
+        list-style-type: disc;
+        margin-left: 30px;
+    }
+    #first-disease{
+        width: 300px;
+        height: 250px;
+        float:right;
+        margin:10px;
+    }
+    #second-disease{
+        width: 300px;
+        height: 250px;
+        float:right;
+    }
+    #first-disease:hover{
+        transform: scale(1.05);
+        cursor:pointer;
+    }
+    #second-disease:hover{
+        transform: scale(1.05);
+        cursor:pointer;
+    }
+    .faq span{
+        font-weight:bold;
+    }
+</style>
+
+</head>
+
+<body>
+
+<!-- ***** Preloader Start ***** -->
+<div id="js-preloader" class="js-preloader">
+<div class="preloader-inner">
+    <span class="dot"></span>
+    <div class="dots">
+    <span></span>
+    <span></span>
+    <span></span>
+    </div>
+</div>
+</div> 
+
+<!-- ***** Preloader End ***** -->
+
+<!-- ***** Header Area Start ***** -->
+<header class="header-area header-sticky wow slideInDown" data-wow-duration="1.75s" data-wow-delay="0s">
+<div class="container">
+    <div class="row">
+    <div class="col-12">
+        <nav class="main-nav">
+        <!-- ***** Logo Start ***** -->
+        <a href="{% url 'home' %}" class="logo">
+            <img src="{% static 'fruit_disease_detection_app/assets/images/logo2.png' %}" alt="FruitWise">
+        </a>
+        <!-- ***** Logo End ***** -->
+
+        <!-- ***** Menu Start ***** -->
+        <ul class="nav">
+            <li class="scroll-to-section"><a href="{% url 'home' %}" class="active"></a></li>
+            <li class="scroll-to-section"><a href="#services"></a></li>
+            <li class="scroll-to-section"><a href="#about"></a></li>
+            <li class="scroll-to-section"><a href="#diseases"></a></li>
+            <li class="scroll-to-section"><a href="#clients"></a></li>
+            <li><div class="gradient-button"><a id="modal_trigger" href="{% url 'home' %}"><i class="fa fa-sign-in-alt"></i> Back to Home</a></div></li> 
+            
+        </ul>        
+        <a class='menu-trigger'>
+            <span>Menu</span>
+        </a>
+        <!-- ***** Menu End ***** -->
+        </nav>
+    </div>
+    </div>
+</div>
+</header>
+<!-- ***** Header Area End ***** -->
+
+
+
+{% comment %} Main Box {% endcomment %}
+<div class = "faq" style = " padding-top: 130px;position: relative;display:flex;justify-content:center;">
+    <div class="col-lg-11">
+        <h3>Pomegranate Diseases</h3><br>
+        <h4 class = "subheading ">Learn about various Pomegranate fruit diseases that can affect your crop. Know about the symptoms,  root causes, favorable conditions and measures to prevent the disease.</h4><br>
+
+        <div class="faq-item">
+            <h4>1. Bacterial leaf and fruit spot</h4>
+            <h5>Disease symptoms:</h5>
+            <ul>
+                <li>Appearance of one to several small water soaked, dark colored irregular spots on leaves resulting in premature defoliation under severe cases.</li>
+                <p id = "first-disease"><img src = "{% static 'fruit_disease_detection_app/assets/images/disease1pom.png' %}" ></p>
+                <li>The pathogen also infects stem and branches causing girdling and cracking symptoms.</li>
+                <li>Spots on fruits were dark brown irregular slightly raised with oily appearance, which split open with L-shaped cracks under severe cases.</li>
+            </ul><br>
+            <h5>Root Causes:</h5>
+            <ul>
+                <li><span>Primary source of inoculum</span> is infected cuttings.</li>
+                <li><span>Secondary source of inoculum</span> spreads through Wind splashed rains.</li>
+            </ul><br>
+            <h5>Favourable Conditions:</h5>
+            <ul>
+                <li>The increase in day temperature (38.6°C) and afternoon relative humidity of 30.4% along with cloudy weather and intermittent rainfall favored the disease initiation and further spread of the disease.</li>
+            </ul><br>
+            <h5>Preventive Measures:</h5>
+            <ul>
+                <li><span>Use Disease-Free Cuttings:</span> Ensure planting materials are free from infection.</li>
+                <li><span>Sanitation:</span>  Remove and destroy infected plant debris to reduce the inoculum.</li>
+                <li><span>Pruning:</span>  Regularly prune plants to improve air circulation and reduce humidity around the foliage.</li>
+                <li><span>Water Management: </span> Avoid overhead irrigation; use drip irrigation to keep foliage dry.</li>
+                <li><span>Chemical Control:</span>  Apply bactericides, such as copper-based fungicides, as a preventive measure during favorable conditions.</li>
+                <li><span>Environmental Control:</span>  Monitor weather conditions and take preventive actions during periods of high humidity and rainfall.</li>
+            </ul>
+        </div>
+        
+        <div class="faq-item">
+            <h4>2. Anthracnose</h4>
+            <h5>Disease symptoms:</h5>
+            <ul>
+                <li>Small, regular to irregular black spots on leaves, calyx region and fruits which turn later on as dark brown depressed spots.</li>
+                <p id = "second-disease"><img src = "{% static 'fruit_disease_detection_app/assets/images/disease2pom.png' %}" ></p>
+                <li>Infected leaves turn yellow and drop off.</li>
+            </ul><br>
+            <h5>Root Causes:</h5>
+            <ul>
+                <li><span>Primary source of inoculum:</span> Infected leaves.</li>
+                <li><span>Secondary source of inoculum:</span> windborne conidia.</li>
+            </ul><br>
+            <h5>Favourable Conditions:</h5>
+            <ul>
+                <li>The disease is severe during August-September when there is high humidity, and the temperature  between 20-27ºC.</li>
+            </ul><br>
+            <h5>Preventive Measures:</h5>
+            <ul>
+                <li><span>Use Resistant Varieties:</span> Plant resistant or tolerant pomegranate varieties if available.</li>
+                <li><span>Sanitation:</span>Regularly remove and destroy infected leaves and fruits.</li>
+                <li><span>Pruning:</span>  Regularly prune plants to improve air circulation and reduce humidity around the foliage.</li>
+                <li><span>Chemical Control:</span>  Use fungicides such as mancozeb or copper-based sprays at the first sign of disease.</li>
+                <li><span>Weather Monitoring: </span>  Be vigilant during periods of high humidity and moderate temperatures (20-27ºC) and apply preventive treatments accordingly.</li>
+            </ul>
+        </div>
+
+        <div class="faq-item">
+            <h4>3. Borer</h4>
+            <h5>Disease symptoms:</h5>
+            <ul>
+                <li>Holes in the pomegranate fruits and stems.</li>
+                <p id = "second-disease"><img src = "{% static 'fruit_disease_detection_app/assets/images/disease3pom.png' %}" ></p>
+                <li>Presence of frass (insect excrement) around the holes.</li>
+                <li>Leaves and stems may wilt and die back.</li>
+            </ul><br>
+            <h5>Root Causes:</h5>
+            <ul>
+                <li>The larvae of various insect pests, such as the pomegranate fruit borer and the trunk borer.</li>
+            </ul><br>
+            <h5>Favourable Conditions:</h5>
+            <ul>
+                <li>Adult insects lay eggs in the spring and summer months.</li>
+                <li>Overgrown trees with dense foliage are more susceptible. </li>
+            </ul><br>
+            <h5>Preventive Measures:</h5>
+            <ul>
+                <li><span>Regular Monitoring:</span>Inspect trees regularly for signs of borer activity, such as holes and frass.</li>
+                <li><span>Sanitation:</span>Regularly remove and destroy infected leaves and fruits.</li>
+                <li><span>Pruning:</span>Maintain proper tree shape and avoid dense foliage to reduce borer habitats.</li>
+                <li><span>Chemical Control:</span>Use insecticides if infestation levels are high, focusing on the timing of egg-laying periods in spring and summer.</li>
+                <li><span>Biological Control: </span>Encourage natural predators of borers, such as parasitic wasps.</li>
+            </ul>
+        </div>
+
+        <div class="faq-item">
+            <h4>4. Alternaria Blight</h4>
+            <h5>Disease symptoms:</h5>
+            <ul>
+                <li>Initially, small black spots that rapidly develop into larger, circular, sunken lesions on fruits.</li>
+                <p id = "second-disease"><img src = "{% static 'fruit_disease_detection_app/assets/images/disease4pom.png' %}" ></p>
+                <li>Spores form a dark velvety layer on the infected area.</li>
+                <li>In severe cases, the whole fruit can rot.</li>
+            </ul><br>
+            <h5>Root Causes:</h5>
+            <ul>
+                <li>Caused by the fungus Alternaria alternata.</li>
+            </ul><br>
+            <h5>Favourable Conditions:</h5>
+            <ul>
+                <li>Warm and wet weather. </li>
+                <li>Mechanical damage or wounds on the fruit increase susceptibility.</li>
+            </ul><br>
+            <h5>Preventive Measures:</h5>
+            <ul>
+                <li><span>Sanitation:</span> Remove and destroy infected plant parts to reduce spore levels.</li>
+                <li><span>Pruning: </span>Prune to improve air circulation and reduce humidity around the fruit.</li>
+                <li><span>Chemical Control: </span>Apply fungicides such as azoxystrobin or chlorothalonil at the first signs of infection.</li>
+                <li><span>Weather Monitoring: </span>Be proactive during warm and wet weather conditions and apply preventive treatments.</li>
+                <li><span>Wound Management:</span>Avoid mechanical damage to fruits and ensure proper handling to reduce susceptibility.</li>
+            </ul>
+        </div>
+        
+        <div class="faq-item">
+            <h4>5. Wilt</h4>
+            <h5>Disease symptoms:</h5>
+            <ul>
+                <li>Yellowing and wilting of leaves and branches.</li>
+                <p id = "second-disease"><img src = "{% static 'fruit_disease_detection_app/assets/images/disease5pom.png' %}" ></p>
+                <li>Dieback of branches, and eventually whole plant death.</li>
+                <li>Brownish discoloration of the vascular tissues inside the stem.  </li>
+            </ul><br>
+            <h5>Root Causes:</h5>
+            <ul>
+                <li> Most commonly caused by the fungus  Ceratocystis fimbriata.  Bacterial and nematode infections can also induce wilt symptoms.</li>
+            </ul><br>
+            <h5>Favourable Conditions:</h5>
+            <ul>
+                <li> Spread easily in soil and contaminated tools.</li>
+                <li>Poor drainage, heavy soils, and root injuries promote infection. </li>
+            </ul><br>
+            <h5>Preventive Measures:</h5>
+            <ul>
+                <li><span>Use Resistant Varieties:</span> Select and plant resistant varieties if available.</li>
+                <li><span>Soil Management: </span>Ensure good drainage and avoid waterlogging. Use well-draining soil.</li>
+                <li><span>Sanitation: </span>Sterilize tools to prevent spreading pathogens. Remove and destroy infected plants.</li>
+                <li><span>Crop Rotation: </span>Avoid planting pomegranates in the same soil consecutively to reduce soil-borne pathogens.</li>
+                <li><span>Chemical Control: </span>Use fungicides or nematicides as per extension guidelines if a specific pathogen is identified.</li>
+            </ul>
+        </div>
+        
+        <div class="faq-item">
+            <h4>6. Cercospora Fruit Spot</h4>
+            <h5>Disease symptoms:</h5>
+            <ul>
+                <li>Circular brown spots with a gray center develop on fruit.</li>
+                <p id = "second-disease"><img src = "{% static 'fruit_disease_detection_app/assets/images/disease6pom.png' %}" ></p>
+            </ul><br>
+            <h5>Root Causes:</h5>
+            <ul>
+                <li>Caused by the fungus Cercospora punicae.</li>
+            </ul><br>
+            <h5>Favourable Conditions:</h5>
+            <ul>
+                <li>Warm and humid weather.</li>
+                <li>Overhead irrigation that promotes prolonged leaf wetness.</li>
+            </ul><br>
+            <h5>Preventive Measures:</h5>
+            <ul>
+                <li><span>Sanitation:</span> Regularly remove and destroy fallen leaves and infected fruits.</li>
+                <li><span>Pruning:</span> Prune trees to enhance air circulation and reduce humidity.</li>
+                <li><span>Water Management:</span> Avoid overhead irrigation to prevent prolonged leaf wetness.</li>
+                <li><span>Chemical Control:</span> Apply fungicides such as mancozeb or copper-based sprays during periods of warm and humid weather.</li>
+                <li><span>Environmental Control:</span> Monitor weather conditions and adjust irrigation practices to minimize leaf wetness during susceptible periods.</li>
+            </ul>
+        </div>
+        
+    </div>
+</div>
+
+
+<!-- Scripts -->
+<script src="{% static 'fruit_disease_detection_app/vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/owl-carousel.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/animation.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/imagesloaded.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/popup.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/custom.js' %}"></script>
+</body>
+</html>

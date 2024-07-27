@@ -1,0 +1,257 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+<title>FruitWise - Detect Diagnose Defend</title>
+
+<!-- Bootstrap core CSS -->
+<link href="{% static 'fruit_disease_detection_app/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+<link rel="icon" type="image/x-icon" href="{% static 'fruit_disease_detection_app/images/favicon.ico' %}">
+
+<!-- Additional CSS Files -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'fruit_disease_detection_app/assets/css/main.css' %}">
+<link rel="stylesheet" href="{% static 'fruit_disease_detection_app/assets/css/animated.css' %}">
+<link rel="stylesheet" href="{% static 'fruit_disease_detection_app/assets/css/owl.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Handlee&family=Patrick+Hand+SC&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100..900&display=swap" rel="stylesheet">
+<style>
+    .faq-item{
+        margin-bottom:20px;
+    }
+    .faq h3{
+        text-align: center;
+        text-decoration:underline;
+        color:#FF6701;
+        font-family: "Grenze Gotisch", serif;
+        font-optical-sizing: auto;
+        font-size:45px;
+        font-style: normal;
+    }
+    .faq .subheading {
+        text-align: center;
+        color:#FF6701;
+        font-family: "Grenze Gotisch", serif;
+        font-optical-sizing: auto;
+        font-size:25px;
+        font-style: normal;
+    }
+    .faq li{
+        list-style-type: disc;
+        margin-left: 30px;
+    }
+    #first-disease{
+        width: 350px;
+        height: 400px;
+        float:right;
+        margin-right: 10px;
+    }
+    #second-disease{
+        width: 350px;
+        height: 400px;
+        float:right;
+        margin-right: 10px;
+    }
+    #fourth-disease{
+        width: 350px;
+        height: 400px;
+        float:right;
+        margin-right: 10px;
+    }
+    .faq span{
+        font-weight:bold;
+    }
+
+    #second-disease:hover, #first-disease:hover, #fourth-disease:hover{
+        transform: scale(1.05);
+        cursor:pointer;
+    }
+</style>
+
+</head>
+
+<body>
+
+<!-- ***** Preloader Start ***** -->
+<div id="js-preloader" class="js-preloader">
+<div class="preloader-inner">
+    <span class="dot"></span>
+    <div class="dots">
+    <span></span>
+    <span></span>
+    <span></span>
+    </div>
+</div>
+</div> 
+
+<!-- ***** Preloader End ***** -->
+
+<!-- ***** Header Area Start ***** -->
+<header class="header-area header-sticky wow slideInDown" data-wow-duration="1.75s" data-wow-delay="0s">
+<div class="container">
+    <div class="row">
+    <div class="col-12">
+        <nav class="main-nav">
+        <!-- ***** Logo Start ***** -->
+        <a href="{% url 'home' %}" class="logo">
+            <img src="{% static 'fruit_disease_detection_app/assets/images/logo2.png' %}" alt="FruitWise">
+        </a>
+        <!-- ***** Logo End ***** -->
+        
+        <!-- ***** Menu Start ***** -->
+        <ul class="nav">
+            <li class="scroll-to-section"><a href="{% url 'home' %}" class="active"></a></li>
+            <li class="scroll-to-section"><a href="#services"></a></li>
+            <li class="scroll-to-section"><a href="#about"></a></li>
+            <li class="scroll-to-section"><a href="#diseases"></a></li>
+            <li class="scroll-to-section"><a href="#clients"></a></li>
+            <li><div class="gradient-button"><a id="modal_trigger" href="{% url 'home' %}"><i class="fa fa-sign-in-alt"></i> Back to Home</a></div></li> 
+            
+        </ul>        
+        <a class='menu-trigger'>
+            <span>Menu</span>
+        </a>
+        <!-- ***** Menu End ***** -->
+        </nav>
+    </div>
+    </div>
+</div>
+</header>
+<!-- ***** Header Area End ***** -->
+
+
+{% comment %} Main Box {% endcomment %}
+<div class = "faq" style = " padding-top: 130px;position: relative;display:flex;justify-content:center;">
+    <div class="col-lg-11">
+        <h3>Orange Leaf Diseases</h3><br>
+        <h4 class = "subheading ">Learn about various Orange leaf diseases that can affect your crop. Know about the symptoms,  root causes, favorable conditions and measures to prevent the disease.</h4><br>
+
+        <div class="faq-item">
+            <h4>1. Citrus Leaf Miner</h4>
+            <h5>Disease symptoms:</h5>
+            <ul>
+                <li>Leaf mining with serpentine tunnels.</li>
+                <p id = "first-disease"><img src = "{% static 'fruit_disease_detection_app/assets/images/disease1orange.png' %}" ></p>
+                <li>Curling and distortion of young leaves.</li>
+            </ul><br>
+            <h5>Root Causes:</h5>
+            <ul>
+                <li>Larvae of the citrus leafminer moth.</li>
+                <li>Warm and humid climates.</li>
+            </ul><br>
+            <h5>Favourable Conditions:</h5>
+            <ul>
+                <li>The most favorable condition for citrus leaf miner infestation in orange leaves is the presence of new, tender leaf growth.</li>
+            </ul><br>
+            <h5>Preventive Measures:</h5>
+            <ul>
+                <li>Prune and destroy infested leaves.</li>
+                <li>Use insecticides specifically targeting leafminer larvae.</li>
+                <li>Introduce natural predators like parasitic wasps.</li>
+            </ul>                    
+        </div>
+        
+        <div class="faq-item">
+            <h4>2. Greasy Spot</h4>
+            <h5>Disease symptoms:</h5>
+            <ul>
+                <li>Oily, dark spots on leaves.</li>
+                <p id = "second-disease"><img src = "{% static 'fruit_disease_detection_app/assets/images/disease2orange.png' %}" ></p>
+                <li>Premature leaf drop.</li>
+            </ul><br>
+            <h5>Root Causes:</h5>
+            <ul>
+                <li>Fungal infection by Mycosphaerella citri.</li>
+                <li>High humidity and warm temperatures.</li>
+            </ul><br>
+            <h5>Favourable Conditions:</h5>
+            <ul>
+                <li>The most crucial factor for the development and spread of Greasy Spot disease in orange leaves is high humidity and prolonged leaf wetness. The disease thrives in warm, humid conditions, and environments with frequent rainfall or overhead irrigation that keep the leaves wet for extended periods are particularly conducive to the fungus's growth. Managing humidity and moisture levels through proper irrigation practices and ensuring good air circulation can significantly help in controlling Greasy Spot.</li>
+            </ul><br>
+            <h5>Preventive Measures:</h5>
+            <ul>
+                <li>Apply copper-based fungicides.</li>
+                <li>Ensure good air circulation through proper pruning.</li>
+                <li>Remove and destroy infected leaves.</li>
+            </ul> 
+        </div>
+
+        <div class="faq-item">
+            <h4>3. Iron deficiency</h4>
+            <h5>Disease symptoms:</h5>
+            <ul>
+                <li>Yellowing of leaves with green veins.</li>
+                <p id = "second-disease"><img src = "{% static 'fruit_disease_detection_app/assets/images/disease3orange.png' %}" ></p>
+                <li>Reduced leaf size and vigor.</li>
+            </ul><br>
+            <h5>Root Causes:</h5>
+            <ul>
+                <li>High soil pH limiting iron availability. </li>
+                <li>Poor soil drainage. </li>
+            </ul><br>
+            <h5>Favourable Conditions:</h5>
+            <ul>
+                <li><strong>High Soil pH (Alkaline Soil): </strong> When soil pH is above 7.0, iron becomes less soluble and harder for orange trees to absorb. This is a common cause of iron deficiency, as the alkaline conditions bind iron in forms that plants cannot readily use.</li>
+                <li><strong>Poor Soil Aeration: </strong>Compacted or poorly drained soils hinder root respiration and iron uptake. Waterlogged conditions are particularly problematic, as they displace the oxygen needed by roots, exacerbating iron deficiency.</li>
+            </ul><br>
+            <h5>Preventive Measures:</h5>
+            <ul>
+                <li>Apply iron chelates to the soil.</li>
+                <li>Adjust soil pH to be more acidic.</li>
+                <li>Improve soil drainage.</li>
+            </ul>
+        </div>
+
+        <div class="faq-item">
+            <h4>4. Magnesium deficiency</h4>
+            <h5>Disease symptoms:</h5>
+            <ul>
+                <li>Yellowing between leaf veins.</li>
+                <p id = "fourth-disease"><img src = "{% static 'fruit_disease_detection_app/assets/images/disease4orange.png' %}" ></p>
+                <li>Leaf curl and drop.</li>
+            </ul><br>
+            <h5>Root Causes:</h5>
+            <ul>
+                <li>Low magnesium levels in soil.</li>
+                <li>mbalance of other nutrients like potassium.</li>
+            </ul><br>
+            <h5>Favourable Conditions:</h5>
+            <ul>
+                <li>Magnesium availability decreases in soils with high pH levels. When soil pH is too high, essential nutrients like magnesium become less soluble and are not readily available for absorption by the plant roots. This condition is common in soils that are excessively limed or naturally alkaline.</li>
+            </ul><br>
+            <h5>Preventive Measures:</h5>
+            <ul>
+                <li>Apply magnesium sulfate (Epsom salts).</li>
+                <li>Use a balanced fertilizer containing magnesium.</li>
+                <li>Ensure proper soil nutrient balance.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<!-- Scripts -->
+<script src="{% static 'fruit_disease_detection_app/vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/owl-carousel.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/animation.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/imagesloaded.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/popup.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/custom.js' %}"></script>
+</body>
+</html>

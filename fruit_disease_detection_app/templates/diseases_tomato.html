@@ -1,0 +1,385 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+<title>FruitWise - Detect Diagnose Defend</title>
+
+<!-- Bootstrap core CSS -->
+<link href="{% static 'fruit_disease_detection_app/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+<link rel="icon" type="image/x-icon" href="{% static 'fruit_disease_detection_app/images/favicon.ico' %}">
+
+<!-- Additional CSS Files -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'fruit_disease_detection_app/assets/css/main.css' %}">
+<link rel="stylesheet" href="{% static 'fruit_disease_detection_app/assets/css/animated.css' %}">
+<link rel="stylesheet" href="{% static 'fruit_disease_detection_app/assets/css/owl.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Handlee&family=Patrick+Hand+SC&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100..900&display=swap" rel="stylesheet">
+<style>
+    .faq-item{
+        margin-bottom:20px;
+    }
+    .faq h3{
+        text-align: center;
+        text-decoration:underline;
+        color:red;
+        font-family: "Grenze Gotisch", serif;
+        font-optical-sizing: auto;
+        font-size:45px;
+        font-style: normal;
+    }
+    .faq li{
+        list-style-type: disc;
+        margin-left: 30px;
+    }
+    #first-disease{
+        width: 200px;
+        height: 250px;
+        float:right;
+    }
+    #second-disease{
+        width: 250px;
+        height: 200px;
+        float:right;
+    }
+    .faq span{
+        font-weight:bold;
+    }
+    .faq .subheading {
+        text-align: center;
+        color:red;
+        font-family: "Grenze Gotisch", serif;
+        font-optical-sizing: auto;
+        font-size:25px;
+        font-style: normal;
+    }
+    #first-disease{
+        width: 300px;
+        height: 250px;
+        float:right;
+        margin:10px;
+    }
+    #second-disease{
+        width: 300px;
+        height: 250px;
+        float:right;
+    }
+    #first-disease:hover{
+        transform: scale(1.05);
+        cursor:pointer;
+    }
+    #second-disease:hover{
+        transform: scale(1.05);
+        cursor:pointer;
+    }
+</style>
+
+</head>
+
+<body>
+
+<!-- ***** Preloader Start ***** -->
+<div id="js-preloader" class="js-preloader">
+<div class="preloader-inner">
+    <span class="dot"></span>
+    <div class="dots">
+    <span></span>
+    <span></span>
+    <span></span>
+    </div>
+</div>
+</div> 
+
+<!-- ***** Preloader End ***** -->
+
+<!-- ***** Header Area Start ***** -->
+<header class="header-area header-sticky wow slideInDown" data-wow-duration="1.75s" data-wow-delay="0s">
+<div class="container">
+    <div class="row">
+    <div class="col-12">
+        <nav class="main-nav">
+        <!-- ***** Logo Start ***** -->
+        <a href="{% url 'home' %}" class="logo">
+            <img src="{% static 'fruit_disease_detection_app/assets/images/logo2.png' %}" alt="FruitWise">
+        </a>
+        <!-- ***** Logo End ***** -->
+
+    
+        <!-- ***** Menu Start ***** -->
+        <ul class="nav">
+            <li class="scroll-to-section"><a href="{% url 'home' %}" class="active"></a></li>
+            <li class="scroll-to-section"><a href="#services"></a></li>
+            <li class="scroll-to-section"><a href="#about"></a></li>
+            <li class="scroll-to-section"><a href="#diseases"></a></li>
+            <li class="scroll-to-section"><a href="#clients"></a></li>
+            <li><div class="gradient-button"><a id="modal_trigger" href="{% url 'home' %}"><i class="fa fa-sign-in-alt"></i> Back to Home</a></div></li> 
+            
+        </ul>        
+        <a class='menu-trigger'>
+            <span>Menu</span>
+        </a>
+        <!-- ***** Menu End ***** -->
+        </nav>
+    </div>
+    </div>
+</div>
+</header>
+<!-- ***** Header Area End ***** -->
+
+
+
+
+{% comment %} Main Box {% endcomment %}
+<div class = "faq" style = " padding-top: 130px;position: relative;display:flex;justify-content:center;">
+    <div class="col-lg-11">
+        <h3>Tomato Leaf Diseases</h3><br>
+        <h4 class = "subheading ">Learn about various Tomato leaf diseases that can affect your crop. Know about the symptoms,  root causes, favorable conditions and measures to prevent the disease.</h4><br>
+
+        <div class="faq-item">
+            <h4>1. Bacterial Spot</h4>
+            <p id = "first-disease"><img src = "{% static 'fruit_disease_detection_app/assets/images/TomatoBacterialSpot.jpg' %}" ></p>
+            <h5>Disease symptoms:</h5>
+            <ul>
+                <li>Leaf yellowing and eventual defoliation, often starting with the lower leaves.</li>
+                <li>Small, water-soaked spots on leaves, which turn dark and become necrotic.</li>
+            </ul><br>
+            <h5>Root Causes:</h5>
+            <ul>
+                <li>Caused by the bacterium Xanthomonas campestris pv. vesicatoria.</li>
+                <li>Spread through contaminated seeds, transplants, or splashing water.</li>
+            </ul><br>
+            <h5>Favourable Conditions:</h5>
+            <ul>
+                <li>Warm, humid environments with temperatures between 75-86°F (24-30°C).</li>
+                <li>Frequent rainfall or overhead irrigation, which facilitates the spread of bacteria.</li>
+            </ul><br>
+            <h5>Preventive Measures:</h5>
+            <ul>
+                <li>Avoid overhead watering and improve air circulation by spacing plants appropriately.</li>
+                <li>Use disease-free seeds and transplants, and practice crop rotation.</li>
+            </ul>
+        </div>
+        
+        <div class="faq-item">
+            <h4>2. Early Blight</h4>
+            <h5>Disease symptoms:</h5>
+            <ul>
+                <p id = "second-disease"><img src = "{% static 'fruit_disease_detection_app/assets/images/TomatoEarlyBlight.png' %}" ></p>
+                <li>Dark, concentric spots on leaves, often with yellow halos.</li>
+                <li>Premature leaf drop and lesions on stems and fruit.</li>
+            </ul><br>
+            <h5>Root Causes:</h5>
+            <ul>
+                <li>Caused by the fungus Alternaria solani.</li>
+                <li>Spread through infected plant debris and seeds.</li>
+            </ul><br>
+            <h5>Favourable Conditions:</h5>
+            <ul>
+                <li>Warm, humid weather.</li>
+                <li>Poorly drained soils and overcrowded plants.</li>
+            </ul><br>
+            <h5>Preventive Measures:</h5>
+            <ul>
+                <li>Rotate crops and avoid planting tomatoes in the same spot each year.</li>
+                <li>Use resistant tomato varieties and practice proper spacing to ensure good air circulation.</li>
+            </ul>
+        </div>
+
+        <div class="faq-item">
+            <h4>3. Late Blight</h4>
+            <p id = "second-disease"><img src = "{% static 'fruit_disease_detection_app/assets/images/TomatoLateBlight.png' %}" ></p>
+            <h5>Disease symptoms:</h5>
+            <ul>
+                <li>White, fuzzy growth on the underside of leaves under humid conditions.</li>
+                <li>Dark, water-soaked lesions on leaves, which can rapidly enlarge and cause leaf collapse.</li>
+            </ul><br>
+            <h5>Root Causes:</h5>
+            <ul>
+                <li>Caused by the pathogen Phytophthora infestans.</li>
+                <li>Spreads through infected plant material, soil, and water.</li>
+            </ul><br>
+            <h5>Favourable Conditions:</h5>
+            <ul>
+                <li>High humidity and prolonged leaf wetness.</li>
+                <li>Cool, wet weather conditions. </li>
+            </ul><br>
+            <h5>Preventive Measures:</h5>
+            <ul>
+                <li>Use resistant tomato varieties.</li>
+                <li>Apply fungicides and ensure proper spacing between plants to improve air circulation.</li>
+            </ul>
+        </div>
+
+        <div class="faq-item">
+            <h4>4. Leaf Mold</h4>
+            <p id = "second-disease"><img src = "{% static 'fruit_disease_detection_app/assets/images/LeafMold.png' %}" ></p>
+            <h5>Disease symptoms:</h5>
+            <ul>
+                <li>Yellow spots on the upper leaf surfaces.</li>
+                <li>Olive-green to brown mold on the undersides of the leaves.</li>
+            </ul><br>
+            <h5>Root Causes:</h5>
+            <ul>
+                <li>Caused by the fungus Passalora fulva (formerly Cladosporium fulvum).</li>
+                <li>Spreads through air-borne spores and infected plant debris.</li>
+            </ul><br>
+            <h5>Favourable Conditions:</h5>
+            <ul>
+                <li>High humidity and temperatures between 22-24°C (72-75°F).</li>
+                <li>Poor ventilation and overcrowded plants.</li>
+            </ul><br>
+            <h5>Preventive Measures:</h5>
+            <ul>
+                <li>Use resistant varieties and apply appropriate fungicides.</li>
+                <li>Ensure good air circulation by proper plant spacing and pruning.</li>
+            </ul>
+        </div> 
+
+        <div class="faq-item">
+            <h4>5. Septoria leaf spot</h4>
+            <p id = "second-disease"><img src = "{% static 'fruit_disease_detection_app/assets/images/Septoria.png' %}" ></p>
+            <h5>Disease symptoms:</h5>
+            <ul>
+                <li>Small, circular spots with dark brown margins and grayish centers on leaves.</li>
+                <li>Yellowing and premature dropping of infected leaves.</li>
+            </ul><br>
+            <h5>Root Causes:</h5>
+            <ul>
+                <li>Caused by the fungus Septoria lycopersici.</li>
+                <li>Spread through splashing water, contaminated tools, and infected plant debris.</li>
+            </ul><br>
+            <h5>Favourable Conditions:</h5>
+            <ul>
+                <li>Overhead irrigation that wets the foliage.</li>
+            </ul><br>
+            <h5>Preventive Measures:</h5>
+            <ul>
+                <li>Remove and destroy infected plant debris and practice crop rotation.</li>
+            </ul>
+        </div>     
+
+        <div class="faq-item">
+            <h4>6. Two-Spotted Spider Mite</h4>
+            <p id = "second-disease"><img src = "{% static 'fruit_disease_detection_app/assets/images/Spidermites.png' %}" ></p>
+            <h5>Disease symptoms:</h5>
+            <ul>
+                <li>Tiny, yellow or white spots on leaves, leading to a stippled or mottled appearance.</li>
+                <li>Fine webbing on the undersides of leaves and between plant parts.</li>
+            </ul><br>
+            <h5>Root Causes:</h5>
+            <ul>
+                <li>Infestation by Tetranychus urticae (two-spotted spider mite).</li>
+            </ul><br>
+            <h5>Favourable Conditions:</h5>
+            <ul>
+                <li>Hot, dry weather.</li>
+                <li>Dusty conditions that stress plants.</li>
+            </ul><br>
+            <h5>Preventive Measures:</h5>
+            <ul>
+                <li>Introduce natural predators like ladybugs or predatory mites.</li>
+            </ul>
+        </div> 
+
+        <div class="faq-item">
+            <h4>7. Target spot</h4>
+            <h5>Disease symptoms:</h5>
+            <p id = "second-disease"><img src = "{% static 'fruit_disease_detection_app/assets/images/TargetSpot.jpg' %}" ></p>
+            <ul>
+                <li>Small, dark brown lesions with concentric rings, giving a target-like appearance.</li>
+                <li>Lesions may enlarge, causing leaf yellowing and defoliation.</li>
+            </ul><br>
+            <h5>Root Causes:</h5>
+            <ul>
+                <li>Caused by the fungus Corynespora cassiicola.</li>
+                <li>Spread through splashing water, contaminated tools, and infected plant debris.</li>
+            </ul><br>
+            <h5>Favourable Conditions:</h5>
+            <ul>
+                <li>Warm, humid weather.</li>
+                <li>Overhead irrigation that wets the foliage.</li>
+            </ul><br>
+            <h5>Preventive Measures:</h5>
+            <ul>
+                <li>Use drip irrigation to minimize leaf wetness.</li>
+                <li>Remove and destroy infected plant debris and apply appropriate fungicides.</li>
+            </ul>
+        </div>  
+    
+        <div class="faq-item">
+            <h4>8. Mosaic Virus</h4>
+            <p id = "second-disease"><img src = "{% static 'fruit_disease_detection_app/assets/images/MosaicVirus.jpg' %}" ></p>
+            <h5>Disease symptoms:</h5>
+            <ul>
+                <li>Mottled light and dark green patterns on leaves, often with a blistered or wrinkled appearance.</li>
+                <li>Stunted growth and reduced fruit yield and quality.</li>
+            </ul><br>
+            <h5>Root Causes:</h5>
+            <ul>
+                <li>Caused by viruses such as Tobacco Mosaic Virus (TMV) and Tomato Mosaic Virus (ToMV).</li>
+                <li>Spread through contaminated tools, hands, infected seeds, and plant debris.</li>
+            </ul><br>
+            <h5>Favourable Conditions:</h5>
+            <ul>
+                <li>Mechanical transmission via handling, pruning, or planting.</li>
+            </ul><br>
+            <h5>Preventive Measures:</h5>
+            <ul>
+                <li>Use virus-resistant tomato varieties.</li>
+                <li>Practice good sanitation: disinfect tools, wash hands after handling plants, and avoid tobacco use around plants.</li>
+            </ul>
+        </div>  
+        
+        <div class="faq-item">
+            <h4>9. Yellow Leaf Curl Virus</h4>
+            <p id = "second-disease"><img src = "{% static 'fruit_disease_detection_app/assets/images/Virus.jpg' %}" ></p>
+            <h5>Disease symptoms:</h5>
+            <ul>
+                <li>Stunted plant growth and reduced fruit production.</li>
+                <li>Upward curling and yellowing of leaf margins.</li>
+            </ul><br>
+            <h5>Root Causes:</h5>
+            <ul>
+                <li>Caused by Tomato Yellow Leaf Curl Virus (TYLCV).</li>
+                <li>Transmitted by the whitefly (Bemisia tabaci).</li>
+            </ul><br>
+            <h5>Favourable Conditions:</h5>
+            <ul>
+                <li>Warm temperatures favor whitefly proliferation.</li>
+                <li>High populations of whiteflies in and around the garden.</li>
+            </ul><br>
+            <h5>Preventive Measures:</h5>
+            <ul>
+                <li>Implement insect control measures, such as using yellow sticky traps and introducing natural predators like ladybugs.</li>
+            </ul>
+        </div>     
+        
+    </div>
+</div>
+
+
+<!-- Scripts -->
+<script src="{% static 'fruit_disease_detection_app/vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/owl-carousel.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/animation.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/imagesloaded.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/popup.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/custom.js' %}"></script>
+</body>
+</html>

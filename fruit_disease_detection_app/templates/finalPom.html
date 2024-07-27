@@ -1,0 +1,197 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+<title>FruitWise - Detect Diagnose Defend</title>
+
+<!-- Bootstrap core CSS -->
+<link href="{% static 'fruit_disease_detection_app/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+<link rel="icon" type="image/x-icon" href="{% static 'fruit_disease_detection_app/images/favicon.ico' %}">
+
+<!-- Additional CSS Files -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'fruit_disease_detection_app/assets/css/main.css' %}">
+<link rel="stylesheet" href="{% static 'fruit_disease_detection_app/assets/css/animated.css' %}">
+<link rel="stylesheet" href="{% static 'fruit_disease_detection_app/assets/css/owl.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Handlee&family=Patrick+Hand+SC&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100..900&display=swap" rel="stylesheet">
+
+<style>
+    .faq-item{
+        margin-bottom:20px;
+        
+    }
+    .faq h3{
+        text-align: center;
+        text-decoration:underline;
+        font-family: "Grenze Gotisch", serif;
+        font-optical-sizing: auto;
+        font-size:45px;
+        font-style: normal;
+    }
+    .faq p{
+        font-size: 25px;
+        text-align: center;
+        color: black;
+    }
+    #details{
+        font-size:22px;
+        text-align: left;
+        padding: 0px 10px 0px 30px;
+    }
+</style>
+</head>
+
+<body>
+
+<!-- ***** Preloader Start ***** -->
+<div id="js-preloader" class="js-preloader">
+<div class="preloader-inner">
+    <span class="dot"></span>
+    <div class="dots">
+    <span></span>
+    <span></span>
+    <span></span>
+    </div>
+</div>
+</div> 
+
+<!-- ***** Header Area Start ***** -->
+<header class="header-area header-sticky wow slideInDown" data-wow-duration="1.75s" data-wow-delay="0s">
+    <div class="container">
+        <div class="row">
+        <div class="col-12">
+            <nav class="main-nav">
+            <!-- ***** Logo Start ***** -->
+            <a href="{% url 'home' %}" class="logo">
+                <img src="{% static 'fruit_disease_detection_app/assets/images/logo2.png' %}" alt="FruitWise">
+            </a>
+            <!-- ***** Logo End ***** -->
+            
+            <!-- ***** Menu Start ***** -->
+            <ul class="nav">
+                <li class="scroll-to-section"><a href="{% url 'home' %}" class="active"></a></li>
+                <li class="scroll-to-section"><a href="#services"></a></li>
+                <li class="scroll-to-section"><a href="#about"></a></li>
+                <li class="scroll-to-section"><a href="#diseases"></a></li>
+                <li class="scroll-to-section"><a href="#clients"></a></li>
+                <li><div class="gradient-button"><a id="modal_trigger" href="{% url 'home' %}"><i class="fa fa-sign-in-alt"></i> Back to Home</a></div></li> 
+                
+            </ul>        
+            <a class='menu-trigger'>
+                <span>Menu</span>
+            </a>
+            <!-- ***** Menu End ***** -->
+            </nav>
+        </div>
+        </div>
+    </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+
+    <div class = "faq" style = " padding-top: 130px;position: relative;display:flex;justify-content:center;">
+        <div class="col-lg-7">
+            <h3>Result</h3><br>
+            {% if result == "Healthy" %}
+            <div class="faq-item" style = "background-color:#a8f6a8;">
+                    <p> ✅ No disease found!! Your fruit is Healthy!!</p>
+                    <p> You still might want to explore our website. </p>
+                    <div class="d-flex justify-content-center mt-3 login_container">
+                        <a href = "{% url 'home' %}" style = "background-color: green" class = "btn login_btn"> Explore More!!</a>
+                    </div>
+                    <div class="d-flex justify-content-center mt-3 login_container">
+                        <a href = "{% url 'detection_pomegranate' %}" style = "background-color: #2c4296" class = "btn login_btn"> Detect Another!!</a>
+                    </div>
+            </div>
+
+            {% else %}
+            
+            <div class="faq-item" style = "background-color:#ffa2a2;">
+                <p> ❗❗ Disease Detected ❗❗: {{result}}</p>
+
+                {% if result == 'Cercospora' %}
+                <p style = "font-weight:400">
+                    To effectively manage Cercospora in pomegranate, you can focus on four key points:
+                </p>
+                <p id = "details">
+                    <strong>1. Sanitation and Pruning:</strong> Remove and destroy fallen debris and prune trees to improve air circulation.<br>
+                    <strong>2. Drip Irrigation:</strong> Use drip irrigation to avoid creating a humid environment.<br>
+                    <strong>3. Fungicide Application:</strong> Apply fungicides (e.g., copper-based, tebuconazole) starting at bloom and every 10-14 days.<br>
+                    <strong> 4. Regular Monitoring:</strong> Regularly inspect for disease signs and monitor weather conditions to adjust practices.
+                </p>
+
+                {% elif result == "Bacterial_Blight" %}
+                <p style = "font-weight:400">
+                    To effectively manage Bacterial Blight in pomegranate, you can focus on 5 key points:
+                </p>
+                <p id = "details">
+                    <strong>1. Use Disease-Free Planting Material:</strong> Start with certified, disease-free plants to prevent initial infection.<br>
+                    <strong>2. Apply Copper-Based Fungicides: </strong> Use copper-based fungicides early in the season to manage and prevent the disease.<br>
+                    <strong>3.Prune for Air Circulation:</strong>  Regularly prune trees to enhance airflow and reduce humidity, which can limit bacterial growth.<br>
+                    <strong> 4. Practice Crop Rotation:</strong> Rotate crops to prevent the buildup of the pathogen in the soil.<br>
+                    <strong>5. Remove Infected Plant Parts:</strong>Regularly inspect plants and remove any infected parts to prevent the spread of the disease.
+                </p>
+
+                {% elif result == 'Anthracnose' %}
+                <p style = "font-weight:400">
+                    To effectively manage Anthracnose in pomegranate, you can focus on 5 key points:
+                </p>
+                <p id = "details">
+                    <strong>1. Pruning and Sanitation:</strong> Regularly prune infected plant parts and remove any debris from around the base of the pomegranate tree. This helps to reduce the spread of Anthracnose spores.<br>
+                    <strong>2. Fungicidal Sprays:</strong>  Apply fungicidal sprays containing active ingredients like copper-based fungicides or sulfur to the foliage and fruits according to the manufacturer's instructions. This helps to prevent the spread and development of Anthracnose.<br>
+                    <strong>3. Proper Watering:</strong>  Avoid overhead watering which can promote the spread of Anthracnose spores. Instead, water the pomegranate tree at the base to keep foliage dry.<br>
+                    <strong> 4. Promote Air Circulation:</strong>  Ensure proper spacing between pomegranate trees and prune branches to improve air circulation within the canopy. Good air circulation reduces humidity levels, which inhibits Anthracnose development.
+                </p>
+                {% elif result == 'Alternaria' %}
+                <p style = "font-weight:400">
+                    To effectively manage Anthracnose in pomegranate, you can focus on 5 key points:
+                </p>
+                <p id = "details">
+                    <strong>1. Sanitation Practices:</strong> Keep the orchard clean by removing any infected plant debris or fallen fruits promptly. This helps to reduce the source of inoculum for the disease.<br>
+                    <strong>2. Fungicide Application:</strong> Apply appropriate fungicides at recommended intervals during critical stages of fruit development and during periods favorable for disease development. Consult with local agricultural experts for specific fungicide recommendations and application schedules.<br>
+                    <strong>3. Pruning and Canopy Management:</strong> Maintain proper air circulation within the canopy through pruning and canopy management practices. This helps to reduce humidity levels and create an environment less conducive to Alternaria infection.
+                    <br>
+                    <strong> 4. Crop Rotation and Diversity:</strong> Implement crop rotation practices to reduce the buildup of Alternaria spores in the soil. Introducing crop diversity in the orchard can also help in managing disease pressure.
+                </p>
+                {% endif %}
+
+                <p> Explore the disease encyclopedia section to know the preventive measures to control this disease.</p>
+                <div class="d-flex justify-content-center mt-3 login_container">
+                    <a href = "{% url 'diseases_pomegranate' %}" style = "background-color: #c00707" class = "btn login_btn"> Check Now!!</a>
+                </div>
+                <div class="d-flex justify-content-center mt-3 login_container">
+                    <a href = "{% url 'detection_pomegranate' %}" style = "background-color: #2c4296" class = "btn login_btn"> Detect Another!!</a>
+                </div>
+            </div>
+                
+            {% endif %}
+            
+        </div>
+    </div>
+
+    <!-- Scripts -->
+<script src="{% static 'fruit_disease_detection_app/vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/owl-carousel.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/animation.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/imagesloaded.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/popup.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/custom.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+<title>FruitWise - Detect Diagnose Defend</title>
+
+<!-- Bootstrap core CSS -->
+<link href="{% static 'fruit_disease_detection_app/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="{% static 'fruit_disease_detection_app/images/favicon.ico' %}">
+
+<!-- Additional CSS Files -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'fruit_disease_detection_app/assets/css/main.css' %}">
+<link rel="stylesheet" href="{% static 'fruit_disease_detection_app/assets/css/animated.css' %}">
+<link rel="stylesheet" href="{% static 'fruit_disease_detection_app/assets/css/owl.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Handlee&family=Patrick+Hand+SC&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100..900&display=swap" rel="stylesheet">
+
+<style>
+    .faq-item{
+        margin-bottom:20px;
+        
+    }
+    .faq h3{
+        text-align: center;
+        text-decoration:underline;
+        font-family: "Grenze Gotisch", serif;
+        font-optical-sizing: auto;
+        font-size:45px;
+        font-style: normal;
+    }
+    .faq p{
+        font-size: 25px;
+        text-align: center;
+        color: black;
+    }
+    #details{
+        font-size:22px;
+        align-items: center;
+        padding: 0px 10px 0px 30px;
+    }
+</style>
+</head>
+
+<body>
+
+<!-- ***** Preloader Start ***** -->
+<div id="js-preloader" class="js-preloader">
+<div class="preloader-inner">
+    <span class="dot"></span>
+    <div class="dots">
+    <span></span>
+    <span></span>
+    <span></span>
+    </div>
+</div>
+</div> 
+
+<!-- ***** Header Area Start ***** -->
+<header class="header-area header-sticky wow slideInDown" data-wow-duration="1.75s" data-wow-delay="0s">
+    <div class="container">
+        <div class="row">
+        <div class="col-12">
+            <nav class="main-nav">
+            <!-- ***** Logo Start ***** -->
+            <a href="{% url 'home' %}" class="logo">
+                <img src="{% static 'fruit_disease_detection_app/assets/images/logo2.png' %}" alt="FruitWise">
+            </a>
+            <!-- ***** Logo End ***** -->
+            
+            <!-- ***** Menu Start ***** -->
+            <ul class="nav">
+                <li class="scroll-to-section"><a href="{% url 'home' %}" class="active"></a></li>
+                <li class="scroll-to-section"><a href="#services"></a></li>
+                <li class="scroll-to-section"><a href="#about"></a></li>
+                <li class="scroll-to-section"><a href="#diseases"></a></li>
+                <li class="scroll-to-section"><a href="#clients"></a></li>
+                <li><div class="gradient-button"><a id="modal_trigger" href="{% url 'home' %}"><i class="fa fa-sign-in-alt"></i> Back to Home</a></div></li> 
+                
+            </ul>        
+            <a class='menu-trigger'>
+                <span>Menu</span>
+            </a>
+            <!-- ***** Menu End ***** -->
+            </nav>
+        </div>
+        </div>
+    </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+
+    <div class = "faq" style = " padding-top: 130px;position: relative;display:flex;justify-content:center;">
+        <div class="col-lg-6">
+            <h3>Result</h3><br>
+            {% if result == "Healthy" %}
+            <div class="faq-item" style = "background-color:#a8f6a8;">
+                    <p> ✅ No disease found!! Your fruit is Healthy!!</p>
+                    <p> You still might want to explore our website. </p>
+                    <div class="d-flex justify-content-center mt-3 login_container">
+                        <a href = "{% url 'home' %}" style = "background-color: green" class = "btn login_btn"> Explore More!!</a>
+                    </div>
+                    <div class="d-flex justify-content-center mt-3 login_container">
+                        <a href = "{% url 'detection_orange' %}" style = "background-color: #2c4296" class = "btn login_btn"> Detect Another!!</a>
+                    </div>
+            </div>
+            
+            {% else %}
+
+            <div class="faq-item" style = "background-color:#ffa2a2;">
+                <p> ❗❗ Disease Detected ❗❗: {{result}}</p>
+
+                {% if result == "Citrus_leaf_miner" %}
+                <p style = "font-weight:400">
+                    To effectively manage citrus leaf miner in orange leaves, you can :
+                </p>
+                <div id = "details">
+                    <strong> 1. </strong> Prune and destroy infested leaves.<br>
+                    <strong> 2. </strong> Use insecticides specifically targeting leafminer larvae.<br>
+                    <strong> 3. </strong> Introduce natural predators like parasitic wasps.
+                </div><br>
+
+                {% elif result == 'iron_deficiency' %}
+                <p style = "font-weight:400">
+                    To effectively manage iron deficiency in orange leaves:
+                </p>
+                <p id = "details">
+                    <strong> 1. Apply iron chelates to the soil.</strong> You can apply these chelates directly to the soil around the orange tree. This helps increase the availability of iron to the roots, especially in soils that are high in pH or have other conditions that limit iron availability.<br>                                   
+                    <strong> 2. Adjust soil pH to be more acidic. </strong>To lower the pH and make the soil more acidic, you can add organic materials like compost, peat moss, or sulfur.<br>
+                    <strong> 3. Improve soil drainage.</strong>To improve soil drainage, you can amend the soil with organic matter, such as compost or well-rotted manure. 
+                </p>
+
+                {% elif result == 'Greasy_spot' %}
+                <p style = "font-weight:400">
+                    To effectively manage Greasy spot in orange leaves:
+                </p>
+                <div id = "details">
+                    <strong>1. </strong> Apply copper-based fungicides.<br>
+                    <strong>2. </strong>  Ensure good air circulation through proper pruning.<br>
+                    <strong>3. </strong> Remove and destroy infected leaves.
+            </div><br>
+                {% elif result == 'magnesium_deficiency' %}
+                <p style = "font-weight:400">
+                    To effectively manage magnesium deficiency in orange leaves:
+                </p>
+                <div id = "details">
+                    <strong> 1. </strong> Apply magnesium sulfate (Epsom salts).<br>
+                    <strong> 2. </strong> Use a balanced fertilizer containing magnesium.</br>
+                    <strong> 3. </strong> Ensure proper soil nutrient balance. 
+                </div><br>
+                {% endif %}
+
+                <p> Explore the disease encyclopedia section to know the preventive measures to control this disease.</p>
+                <div class="d-flex justify-content-center mt-3 login_container">
+                    <a href = "{% url 'diseases_orange' %}" style = "background-color: #c00707" class = "btn login_btn"> Check Now!!</a>
+                </div>
+                <div class="d-flex justify-content-center mt-3 login_container">
+                    <a href = "{% url 'detection_orange' %}" style = "background-color: #2c4296" class = "btn login_btn"> Detect Another!!</a>
+                </div>
+            </div>
+                
+            {% endif %}
+            
+        </div>
+    </div>
+
+    <!-- Scripts -->
+<script src="{% static 'fruit_disease_detection_app/vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/owl-carousel.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/animation.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/imagesloaded.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/popup.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/custom.js' %}"></script>
+</body>
+</html>

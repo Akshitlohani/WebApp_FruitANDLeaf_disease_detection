@@ -1,0 +1,234 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+<title>FruitWise - Detect Diagnose Defend</title>
+
+<!-- Bootstrap core CSS -->
+<link href="{% static 'fruit_disease_detection_app/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+<link rel="icon" type="image/x-icon" href="{% static 'fruit_disease_detection_app/images/favicon.ico' %}">
+
+<!-- Additional CSS Files -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'fruit_disease_detection_app/assets/css/main.css' %}">
+<link rel="stylesheet" href="{% static 'fruit_disease_detection_app/assets/css/animated.css' %}">
+<link rel="stylesheet" href="{% static 'fruit_disease_detection_app/assets/css/owl.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Handlee&family=Patrick+Hand+SC&display=swap" rel="stylesheet">
+<style>
+    .faq h3{
+        text-align: center;
+        text-decoration:underline;
+        color:orange;
+        font-family: "Grenze Gotisch", serif;
+        font-optical-sizing: auto;
+        font-size:45px;
+        font-style: normal;
+    }
+    .popup{
+        width: 700px;
+        background-color: #496989;
+        border-radius:6px;
+        border: 15px solid white;
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.1);
+        text-align: center;
+        padding: 0px 30px 30px;
+        color: #333;
+        visibility: hidden;
+        transition: transform 0.4s, top 0.4s;
+        z-index: 1000;
+    }
+    .open-popup{
+        top: 50%;
+        visibility: visible;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    .popup h2{
+        font-size:38px;
+        font-weight: 500;
+        margin: 30px 0px 10px;
+        color: white;
+        text-decoration:underline;
+    }
+    .popup h3{
+        font-size:24px;
+        font-weight: 400;
+        margin: 30px 0px 10px;
+        color: white;
+    }
+    .popup p{
+        font-size:18px;
+        font-weight: 300;
+        color: white;
+        text-align:justify;
+    }
+    .popup button{
+        width: 20%;
+        margin-top:50px;
+        padding: 10px 0px;
+        background-color: #FFF455;
+        border: 0;
+        outline: none;
+        font-size: 18px;
+        border-radius: 4px;
+        cursor : pointer;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+    }
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+        backdrop-filter: blur(5px); /* Apply blur effect */
+        z-index: 999; /* Ensure overlay is behind popup */
+        display: none; /* Initially hidden */
+    }
+    .open-overlay {
+        display: block; 
+    }
+    form label{
+        padding-right:10px;
+        font-size:20px;
+        font-family:Georgia;
+        font-weight:bold;
+        padding-left:175px;
+    }
+</style>
+</head>
+
+<body>
+
+<!-- ***** Preloader Start ***** -->
+<div id="js-preloader" class="js-preloader">
+<div class="preloader-inner">
+    <span class="dot"></span>
+    <div class="dots">
+    <span></span>
+    <span></span>
+    <span></span>
+    </div>
+</div>
+</div> 
+
+<!-- ***** Preloader End ***** -->
+
+<!-- ***** Header Area Start ***** -->
+<header class="header-area header-sticky wow slideInDown" data-wow-duration="1.75s" data-wow-delay="0s">
+<div class="container">
+    <div class="row">
+    <div class="col-12">
+        <nav class="main-nav">
+        <!-- ***** Logo Start ***** -->
+        <a href="{% url 'home' %}" class="logo">
+            <img src="{% static 'fruit_disease_detection_app/assets/images/logo2.png' %}" alt="FruitWise">
+        </a>
+        <!-- ***** Logo End ***** -->
+
+        
+        <!-- ***** Menu Start ***** -->
+        <ul class="nav">
+            <li class="scroll-to-section"><a href="{% url 'home' %}" class="active"></a></li>
+            <li class="scroll-to-section"><a href="#services"></a></li>
+            <li class="scroll-to-section"><a href="#about"></a></li>
+            <li class="scroll-to-section"><a href="#diseases"></a></li>
+            <li class="scroll-to-section"><a href="#clients"></a></li>
+            <li><div class="gradient-button"><a id="modal_trigger" href="{% url 'home' %}"><i class="fa fa-sign-in-alt"></i> Back to Home</a></div></li> 
+            
+        </ul>        
+        <a class='menu-trigger'>
+            <span>Menu</span>
+        </a>
+        <!-- ***** Menu End ***** -->
+        </nav>
+    </div>
+    </div>
+</div>
+</header>
+<!-- ***** Header Area End ***** -->
+
+
+{% comment %} Main Box {% endcomment %}
+<div class = "faq" style = " padding-top: 130px;position: relative;display:flex;justify-content:center;">
+    <div class="col-lg-7">
+        <h3>Orange Disease Detection</h3><br>
+        <div class="faq-item">
+            <h4>Please read the application instructions carefully before uploading the image.</h4>
+            <h4 style = "text-align:center"><a href="#faq" onclick = "openPopUp()">Read Here</a></h4>
+            <h4 style = "text-align:center; color:red">Note: Please upload leaf image!</h4><hr>
+
+            <form action="{% url 'detection_orange' %}" method="post" enctype="multipart/form-data">
+
+                {% csrf_token %}
+                <div class="input-group mb-3">
+                    <label >Description (2 - 3 words) </label>
+                    {{form.description}}
+                </div>
+                <div class="input-group mb-3">
+                    <label>Image </label>
+                    {{form.image}}
+                </div>
+                <div class="d-flex justify-content-center mt-3 login_container">
+                    <input class="btn login_btn" type="submit" value="Detect Now">
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</div>
+
+<div class = "container">
+    <div class = "popup" id = "popup">
+        <h2>Application Instructions</h2>
+        <h3>To utilize the disease detection feature on FruitWise, follow these steps:</h3><br>
+        <p>1. Open the website and navigate to the disease detection section.</p>
+        <p>2. Choose the fruit from the available options among those listed with diseases.</p>
+        <p>3. Once selected, upload an image showing the affected part of the fruit plant.</p>
+        <p>4. Click on the submit button to initiate the disease detection process.</p>
+        <p>5. After the disease is detected, you can explore further details by visiting the disease encyclopedia section.</p>
+        <p>6. In the disease encyclopedia, you'll find product recommendations and preventive measures, aiding in understanding and addressing the plant's disease effectively.</p>
+        <button type="button" onclick = "closePopUp()">OK</button>
+    </div>
+    <div class="overlay" id="overlay"></div>
+</div>
+
+<script>
+    let popup = document.getElementById("popup");
+
+    function openPopUp() {
+        popup.classList.add("open-popup");
+        overlay.classList.add("open-overlay");
+    }
+    function closePopUp() {
+        popup.classList.remove("open-popup");
+        overlay.classList.remove("open-overlay");
+    }
+</script>
+
+<!-- Scripts -->
+<script src="{% static 'fruit_disease_detection_app/vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/owl-carousel.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/animation.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/imagesloaded.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/popup.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/custom.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+<title>FruitWise - Detect Diagnose Defend</title>
+
+<!-- Bootstrap core CSS -->
+<link href="{% static 'fruit_disease_detection_app/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+<link rel="icon" type="image/x-icon" href="{% static 'fruit_disease_detection_app/images/favicon.ico' %}">
+
+<!-- Additional CSS Files -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'fruit_disease_detection_app/assets/css/main.css' %}">
+<link rel="stylesheet" href="{% static 'fruit_disease_detection_app/assets/css/animated.css' %}">
+<link rel="stylesheet" href="{% static 'fruit_disease_detection_app/assets/css/owl.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Handlee&family=Patrick+Hand+SC&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100..900&display=swap" rel="stylesheet">
+<style>
+    .faq-item{
+        margin-bottom:20px;
+    }
+    .faq h3{
+        text-align: center;
+        text-decoration:underline;
+        color:#e53b9e;
+        font-family: "Grenze Gotisch", serif;
+        font-optical-sizing: auto;
+        font-size:45px;
+        font-style: normal;
+    }
+    .faq .subheading {
+        text-align: center;
+        color:#e53b9e;
+        font-family: "Grenze Gotisch", serif;
+        font-optical-sizing: auto;
+        font-size:25px;
+        font-style: normal;
+    }
+    .faq li{
+        list-style-type: disc;
+        margin-left: 30px;
+    }
+    #first-disease{
+        width: 300px;
+        height: 250px;
+        float:right;
+        transition: transform .2s;
+        margin: 0 auto;
+    }
+    #first-disease:hover{
+        transform: scale(1.05);
+        cursor:pointer;
+    }
+    #second-disease:hover{
+        transform: scale(1.05);
+        cursor:pointer;
+    }
+    #second-disease{
+        width: 350px;
+        height: 350px;
+        float:right;
+    }
+    .faq span{
+        font-weight:bold;
+    }
+</style>
+
+</head>
+
+<body>
+
+<!-- ***** Preloader Start ***** -->
+<div id="js-preloader" class="js-preloader">
+<div class="preloader-inner">
+    <span class="dot"></span>
+    <div class="dots">
+    <span></span>
+    <span></span>
+    <span></span>
+    </div>
+</div>
+</div> 
+
+<!-- ***** Preloader End ***** -->
+
+<!-- ***** Header Area Start ***** -->
+<header class="header-area header-sticky wow slideInDown" data-wow-duration="1.75s" data-wow-delay="0s">
+<div class="container">
+    <div class="row">
+    <div class="col-12">
+        <nav class="main-nav">
+        <!-- ***** Logo Start ***** -->
+        <a href="{% url 'home' %}" class="logo">
+            <img src="{% static 'fruit_disease_detection_app/assets/images/logo2.png' %}" alt="FruitWise">
+        </a>
+        <!-- ***** Logo End ***** -->
+
+        <!-- ***** Menu Start ***** -->
+        <ul class="nav">
+            <li class="scroll-to-section"><a href="{% url 'home' %}" class="active"></a></li>
+            <li class="scroll-to-section"><a href="#services"></a></li>
+            <li class="scroll-to-section"><a href="#about"></a></li>
+            <li class="scroll-to-section"><a href="#diseases"></a></li>
+            <li class="scroll-to-section"><a href="#clients"></a></li>
+            <li><div class="gradient-button"><a id="modal_trigger" href="{% url 'home' %}"><i class="fa fa-sign-in-alt"></i> Back to Home</a></div></li> 
+            
+        </ul>        
+        <a class='menu-trigger'>
+            <span>Menu</span>
+        </a>
+        <!-- ***** Menu End ***** -->
+        </nav>
+    </div>
+    </div>
+</div>
+</header>
+<!-- ***** Header Area End ***** -->
+
+{% comment %} Main Box {% endcomment %}
+<div class = "faq" style = " padding-top: 130px;position: relative;display:flex;justify-content:center;">
+    <div class="col-lg-11">
+        <h3>Dragon Fruit Diseases</h3><br>
+        <h4 class = "subheading ">Learn about various Dragon fruit diseases that can affect your crop. Know about the symptoms,  root causes, favorable conditions and measures to prevent the disease.</h4><br>
+
+        <div class="faq-item">
+            <h4>1. Anthracnose</h4>
+            <h5>Disease symptoms:</h5>
+            <ul>
+                <li>Circular, sunken lesions on the fruit, often with pink or orange spore masses in the center. Lesions can start small and expand, leading to severe rotting.</li>
+            </ul><br>
+            <p id = "first-disease"><img src = "{% static 'fruit_disease_detection_app/assets/images/disease1dragonfruit.png' %}" ></p>
+            <h5>Root Causes:</h5>
+            <ul>
+                <li>The fungus can survive on plant debris, in the soil, or on alternate hosts. Spores spread through rain splash, wind, insects, or contaminated tools.</li>
+            </ul><br>
+            <h5>Favourable Conditions:</h5>
+            <ul>
+                <li>Warm, humid weather. </li>
+                <li>Overhead irrigation that splashes water on the fruit and foliage
+                <li>Wounds on the plant from insect damage or pruning</li>
+            </ul><br>
+            <h5>Preventive Measures: </h5>
+            <ul>
+                <li><span>Sanitation:</span>Regularly remove and destroy fallen fruits and plant debris to reduce the source of inoculum.</li>
+                <li><span>Pruning:</span>Prune plants to improve air circulation and reduce humidity around the fruit and foliage.</li>
+                <li><span>Water Management:</span>
+                
+                Avoid overhead irrigation. Use drip irrigation to minimize water splash on fruit and foliage.</li>
+                
+                <li><span>Chemical Control:</span>
+                
+                Apply fungicides such as chlorothalonil, mancozeb, or copper-based products as a preventive measure, especially during warm and humid conditions.
+                </li>
+                <li><span>Weather Monitoring:</span>
+                
+                Be vigilant during periods of warm, humid weather, and take preventive actions such as timely fungicide applications and improved sanitation.</li>
+                <li><span>Integrated Pest Management (IPM):</span>
+                
+                Monitor for insect pests that can cause wounds and take appropriate measures to control them to reduce entry points for the fungus.</li>
+            </ul>
+        </div>
+        
+        <div class="faq-item">
+            <h4>2. Bacterial Soft Rot</h4>
+            <h5>Disease symptoms:</h5>
+            <ul>
+                <li> Rotting can extend deep into the center of the fruit and stem, often resulting in a hollow shell.</li>
+            </ul><br>
+            <p id = "second-disease"><img src = "{% static 'fruit_disease_detection_app/assets/images/disease2dragonfruit.png' %}" ></p>
+            <h5>Root Causes:</h5>
+            <ul>
+                <li>Caused by various bacterial species, including Erwinia and Pectobacterium species.</li>
+            </ul><br>
+            <h5>Favourable Conditions:</h5>
+            <ul>
+                <li>High humidity and warm temperatures.
+                <li>Wet conditions, especially following rain or overhead irrigation.</li>
+                <li>Injuries or wounds on the plant.</li>
+            </ul><br>
+            <h5>Preventive Measures: </h5>
+            <ul>
+                <li><span>Sanitation:</span> Disinfect tools and equipment regularly to avoid cross-contamination.</li>
+                <li><span>Water Management:</span> Avoid overhead irrigation to prevent water from splashing onto the fruit and foliage.</li>
+                <li><span>Pruning: </span>Prune to improve air circulation and sunlight penetration, which can help reduce humidity around the plants.</li>
+                <li><span>Chemical Control:</span> Use bactericides like copper-based sprays or other recommended bactericidal treatments as a preventive measure.</li>
+                <li><span>Wound Management:</span> Avoid unnecessary wounding of plants during pruning, harvesting, or other operations.</li>
+                <li><span>Environmental Control: </span>Monitor weather conditions closely, particularly during periods of high humidity and warm temperatures.</li>
+            </ul>
+        </div>
+        
+    </div>
+</div>
+
+
+<!-- Scripts -->
+<script src="{% static 'fruit_disease_detection_app/vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/owl-carousel.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/animation.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/imagesloaded.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/popup.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/custom.js' %}"></script>
+</body>
+</html>

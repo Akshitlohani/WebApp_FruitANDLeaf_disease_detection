@@ -1,0 +1,168 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+<title>FruitWise - Detect Diagnose Defend</title>
+
+<!-- Bootstrap core CSS -->
+<link href="{% static 'fruit_disease_detection_app/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="{% static 'fruit_disease_detection_app/images/favicon.ico' %}">
+
+
+<!-- Additional CSS Files -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'fruit_disease_detection_app/assets/css/main.css' %}">
+<link rel="stylesheet" href="{% static 'fruit_disease_detection_app/assets/css/animated.css' %}">
+<link rel="stylesheet" href="{% static 'fruit_disease_detection_app/assets/css/owl.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Handlee&family=Patrick+Hand+SC&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100..900&display=swap" rel="stylesheet">
+
+<style>
+    .faq-item{
+        margin-bottom:20px;
+        
+    }
+    .faq h3{
+        text-align: center;
+        text-decoration:underline;
+        font-family: "Grenze Gotisch", serif;
+        font-optical-sizing: auto;
+        font-size:45px;
+        font-style: normal;
+    }
+    .faq p{
+        font-size: 25px;
+        text-align: center;
+        color: black;
+    }
+    #details{
+        font-size:22px;
+        text-align: left;
+        padding: 0px 10px 0px 30px;
+    }
+</style>
+</head>
+
+<body>
+
+<!-- ***** Preloader Start ***** -->
+<div id="js-preloader" class="js-preloader">
+<div class="preloader-inner">
+    <span class="dot"></span>
+    <div class="dots">
+    <span></span>
+    <span></span>
+    <span></span>
+    </div>
+</div>
+</div> 
+
+<!-- ***** Header Area Start ***** -->
+<header class="header-area header-sticky wow slideInDown" data-wow-duration="1.75s" data-wow-delay="0s">
+    <div class="container">
+        <div class="row">
+        <div class="col-12">
+            <nav class="main-nav">
+            <!-- ***** Logo Start ***** -->
+            <a href="{% url 'home' %}" class="logo">
+                <img src="{% static 'fruit_disease_detection_app/assets/images/logo2.png' %}" alt="FruitWise">
+            </a>
+            <!-- ***** Logo End ***** -->
+            
+            <!-- ***** Menu Start ***** -->
+            <ul class="nav">
+                <li class="scroll-to-section"><a href="{% url 'home' %}" class="active"></a></li>
+                <li class="scroll-to-section"><a href="#services"></a></li>
+                <li class="scroll-to-section"><a href="#about"></a></li>
+                <li class="scroll-to-section"><a href="#diseases"></a></li>
+                <li class="scroll-to-section"><a href="#clients"></a></li>
+                <li><div class="gradient-button"><a id="modal_trigger" href="{% url 'home' %}"><i class="fa fa-sign-in-alt"></i> Back to Home</a></div></li> 
+                
+            </ul>        
+            <a class='menu-trigger'>
+                <span>Menu</span>
+            </a>
+            <!-- ***** Menu End ***** -->
+            </nav>
+        </div>
+        </div>
+    </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+
+    <div class = "faq" style = " padding-top: 130px;position: relative;display:flex;justify-content:center;">
+        <div class="col-lg-7">
+            <h3>Result</h3><br>
+            {% if result == "Fresh" %}
+            <div class="faq-item" style = "background-color:#a8f6a8;">
+                    <p> ✅ No disease found!! Your fruit is Healthy!!</p>
+                    <p> You still might want to explore our website. </p>
+                    <div class="d-flex justify-content-center mt-3 login_container">
+                        <a href = "{% url 'home' %}" style = "background-color: green" class = "btn login_btn"> Explore More!!</a>
+                    </div>
+                    <div class="d-flex justify-content-center mt-3 login_container">
+                        <a href = "{% url 'detection_dragonfruit' %}" style = "background-color: #2c4296" class = "btn login_btn"> Detect Another!!</a>
+                    </div>
+            </div>
+            {% else %}
+            <div class="faq-item" style = "background-color:#ffa2a2;">
+                <p> ❗❗ Disease Detected ❗❗: {{result}}</p>
+                {% if result == 'Anthracnose' %}
+                <p style = "font-weight:400">
+                    To effectively manage anthracnose in dragon fruit, you can focus on 4 major actions:
+                </p>
+                <p id = "details">
+                    <strong> 1. Sanitation and Cultural Practices:</strong> Regularly remove infected material, prune for better airflow, and use drip irrigation.<br>
+                    <strong> 2. Effective Fungicide Application:</strong>  Apply preventive fungicides and rotate between different types to avoid resistance.<br>
+                    <strong> 3. Biological Controls: </strong> Introduce beneficial organisms like Trichoderma spp. and use neem oil as a natural antifungal.<br>
+                    <strong> 4. Resistant Varieties:</strong>  Plant dragon fruit varieties that are resistant or tolerant to anthracnose.
+                </p>
+                {% elif result == 'Bacterial Soft Rot' %}
+                <p style = "font-weight:400">
+                    To effectively manage Bacterial Soft Rot in dragon fruit, you can focus on 4 major actions:
+                </p>
+                <p id = "details">
+                    <strong> 1.Sanitation Practices: </strong>Ensure proper hygiene and cleanliness in the dragonfruit plantation. Remove and dispose of any infected or rotting plant parts promptly to prevent the spread of the disease.<br>
+                    <strong> 2. Proper Irrigation: </strong>Avoid overwatering dragonfruit plants as excess moisture can create favorable conditions for bacterial soft rot. Use drip irrigation or water at the base of the plant to minimize water contact with the fruit and stems.<br>
+                    <strong> 3. Pruning and Thinning:</strong> Regularly prune and thin out dense foliage to improve air circulation around the plants. Good airflow helps reduce humidity levels, which can inhibit the growth and spread of bacterial pathogens.<br>
+                    <strong> 4. Copper-based Fungicides: </strong>Apply copper-based fungicides according to manufacturer's instructions as a preventive measure against bacterial soft rot. These fungicides can help suppress bacterial growth and protect the plants from infection.
+                </p>
+                {% endif %}
+                <p> Explore the disease encyclopedia section to know the more about this(or other) disease and know the preventive measures to control this disease.</p>
+                <div class="d-flex justify-content-center mt-3 login_container">
+                    <a href = "{% url 'diseases_dragonfruit' %}" style = "background-color: #c00707" class = "btn login_btn"> Check Now!!</a>
+                </div>
+                <div class="d-flex justify-content-center mt-3 login_container">
+                    <a href = "{% url 'detection_dragonfruit' %}" style = "background-color: #2c4296" class = "btn login_btn"> Detect Another!!</a>
+                </div>
+            </div>
+
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Scripts -->
+<script src="{% static 'fruit_disease_detection_app/vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/owl-carousel.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/animation.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/imagesloaded.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/popup.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/custom.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,567 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+<title>FruitWise - Detect Diagnose Defend</title>
+
+<!-- Bootstrap core CSS -->
+<link href="{% static 'fruit_disease_detection_app/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="{% static 'fruit_disease_detection_app/images/favicon.ico' %}">
+
+<!-- Additional CSS Files -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'fruit_disease_detection_app/assets/css/main.css' %}">
+<link rel="stylesheet" href="{% static 'fruit_disease_detection_app/assets/css/animated.css' %}">
+<link rel="stylesheet" href="{% static 'fruit_disease_detection_app/assets/css/owl.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Handlee&family=Patrick+Hand+SC&display=swap" rel="stylesheet">
+<style>
+    .patrick-hand{
+        font-family: "Patrick Hand SC", cursive;
+        font-weight: 700;
+        font-style: normal;
+        font-size: 60px;
+    }  
+    .handlee-regular {
+        font-family: "Handlee", cursive;
+        font-weight: 500;
+        font-style: normal;
+        font-size: 30px;
+    } 
+    #heading-fruit{
+        text-decoration: none;
+        color: #f7feff;
+        font-weight: 700;
+        position: relative;
+    }     
+    #heading-fruit::before {
+        content :'';
+        background-color: green;
+        position: absolute;
+        left: 0;
+        bottom: 3px;
+        width: 100%;
+        height: 8px;
+        z-index: -1;
+        transition: all .3s ease-in-out;
+    }
+    .popup{
+        width: 700px;
+        background-color: #496989;
+        border-radius:6px;
+        border: 15px solid white;
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.1);
+        text-align: center;
+        padding: 0px 30px 30px;
+        color: #333;
+        visibility: hidden;
+        transition: transform 0.4s, top 0.4s;
+        z-index: 1000;
+    }
+    .open-popup{
+        top: 50%;
+        visibility: visible;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    .popup h2{
+        font-size:38px;
+        font-weight: 500;
+        margin: 30px 0px 10px;
+        color: white;
+        text-decoration:underline;
+    }
+    .popup h3{
+        font-size:24px;
+        font-weight: 400;
+        margin: 30px 0px 10px;
+        color: white;
+    }
+    .popup p{
+        font-size:18px;
+        font-weight: 300;
+        color: white;
+        text-align:justify;
+    }
+    .popup button{
+        width: 20%;
+        margin-top:50px;
+        padding: 10px 0px;
+        background-color: #FFF455;
+        border: 0;
+        outline: none;
+        font-size: 18px;
+        border-radius: 4px;
+        cursor : pointer;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+    }
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+        backdrop-filter: blur(5px); /* Apply blur effect */
+        z-index: 999; /* Ensure overlay is behind popup */
+        display: none; /* Initially hidden */
+    }
+    
+    .open-overlay {
+        display: block; 
+    }
+    .hello-msg{
+        padding:10px 10px 0px 0px;
+        color: blue;
+    }
+</style>
+
+</head>
+
+<body>
+
+<!-- ***** Preloader Start ***** -->
+<div id="js-preloader" class="js-preloader">
+<div class="preloader-inner">
+    <span class="dot"></span>
+    <div class="dots">
+    <span></span>
+    <span></span>
+    <span></span>
+    </div>
+</div>
+</div> 
+
+<!-- ***** Preloader End ***** -->
+
+<!-- ***** Header Area Start ***** -->
+<header class="header-area header-sticky wow slideInDown" data-wow-duration="1.75s" data-wow-delay="0s">
+<div class="container">
+    <div class="row">
+    <div class="col-12">
+        <nav class="main-nav">
+        <!-- ***** Logo Start ***** -->
+        <a href="{% url 'home' %}" class="logo">
+            <img src="{% static 'fruit_disease_detection_app/assets/images/logo2.png' %}" alt="FruitWise">
+        </a>
+        <!-- ***** Logo End ***** -->
+
+        <!-- ***** Menu Start ***** -->
+        <ul class="nav">
+            <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+            <li class="scroll-to-section"><a href="#services">Detect</a></li>
+            <li class="scroll-to-section"><a href="#about">Features</a></li>
+            <li class="scroll-to-section"><a href="#diseases">Disease Encyclopedia</a></li>
+            <li class="scroll-to-section"><a href="#clients">FAQs</a></li>
+            <li>{% if user.is_authenticated %}
+                <div style = "display:flex;">
+                    <div class = "hello-msg">Hello, {{request.user}} </div>
+                    <div class="gradient-button">
+                        <a href = "{% url 'logout' %}" class = "btn">Logout </a>
+                    </div>
+                </div>    
+                {% else %}
+                    <div class="gradient-button">
+                        <a href = "{% url 'signup' %}" class = "btn">Sign Up / Sign In </a>
+                    </div>
+                {% endif %}</li>
+        </ul>        
+        <a class='menu-trigger'>
+            <span>Menu</span>
+        </a>
+        <!-- ***** Menu End ***** -->
+        </nav>
+    </div>
+    </div>
+</div>
+</header>
+<!-- ***** Header Area End ***** -->
+
+<div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+<div class="container">
+    <div class="row">
+    <div class="col-lg-12">
+        <div class="row">
+        <div class="col-lg-6 align-self-center">
+            <div class="left-content show-up header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class = "patrick-hand">Guardians of <span id = "heading-fruit">Fruit</span> Health</h1><br>
+                <p class = "handlee-regular">"Elevating awareness for bountiful harvests"
+                    "Empowering growers to safeguard yields"
+                    "Detect, Diagnose, Defend for fruit excellence"</p>
+                </div>
+                <div class="col-lg-12">
+                <div class="white-button first-button scroll-to-section">
+                    {% comment %} <a href="#contact">Free Quote <i class="fab fa-apple"></i></a> {% endcomment %}
+                </div>
+                <div class="white-button scroll-to-section">
+                    {% comment %} <a href="#contact">Free Quote <i class="fab fa-google-play"></i></a> {% endcomment %}
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+            <img src="{% static 'fruit_disease_detection_app/assets/images/MainSlider2.png' %}" alt="Main Image" style = "padding-left:70px; width:200%; margin-top:-50px">
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+
+<div id="services" class="services section">
+<div class="container">
+    <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+        <div class="section-heading  wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
+        <h4>Orchard Protection Simplified with</h4>
+        <h4><em>Advanced Disease Detection</em></h4>
+        <img src="{% static 'fruit_disease_detection_app/assets/images/heading-line-dec.png' %}" alt="this is a heading image">
+        <img src="{% static 'fruit_disease_detection_app/assets/images/heading-line-dec.png' %}" alt="this is a heading image">
+
+        <p style = "color:gray; margin-left:10px; margin-right:10px; font-size:18px; font-weight:600">Our platform offers comprehensive solutions for identifying and diagnosing fruit diseases early, empowering farmers to take proactive measures. With FruitWise, you can detect potential threats swiftly, diagnose accurately, and defend your orchards effectively against harmful diseases. Experience peace of mind and elevate your farming practices with our reliable disease detection tools.</p>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+        <div class="service-item first-service">
+            <div class="icon"></div>
+            <h4>Pomegranate</h4>
+            <p>Keep your pomegranates thriving by spotting diseases like fruit rot and leaf spot before they harm your harvest.</p>
+            <div class="text-button">
+            <a href="{% url 'detection_pomegranate' %}">Detect Disease <i class="fa fa-arrow-right"></i></a>
+            </div>
+        </div>
+        </div>
+        <div class="col-lg-4">
+        <div class="service-item second-service">
+            <div class="icon"></div>
+            <h4>Dragon Fruit</h4>
+            <p>Safeguard your dragon fruit crop from diseases like stem rot and anthracnose using our straightforward detection system.</p>
+            <div class="text-button">
+            <a href="{% url 'detection_dragonfruit' %}">Detect Disease <i class="fa fa-arrow-right"></i></a>
+            </div>
+        </div>
+        </div>
+        <div class="col-lg-4">
+        <div class="service-item third-service">
+            <div class="icon"></div>
+            <h4>Orange</h4>
+            <p>Defend your oranges from diseases like citrus greening and citrus canker with our farmer-friendly detection solutions.</p>
+            <div class="text-button">
+            <a href="{% url 'detection_orange' %}">Detect Disease <i class="fa fa-arrow-right"></i></a>
+            </div>
+        </div>
+        </div>
+        <div style = "margin-top:20px;display:flex;justify-content:center;">
+            <div class="col-lg-4">
+                <div class="service-item fourth-service">
+                    <div class="icon"></div>
+                    <h4>Papaya</h4>
+                    <p>Protect your papayas from diseases like papaya ringspot virus and powdery mildew with our easy-to-use detection tools.</p>
+                    <div class="text-button">
+                    <a href="{% url 'detection_papaya' %}">Detect Disease <i class="fa fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4" style = "margin-left:20px;" >
+                <div class="service-item fifth-service">
+                    <div class="icon"></div>
+                    <h4>Tomato</h4>        
+                    <p>Ensure healthy tomatoes by catching diseases like blight and mosaic virus early with our simple detection methods.</p>
+                    <div class="text-button">
+                    <a href="{% url 'detection_tomato' %}">Detect Disease <i class="fa fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
+<div id="about" class="about-us section">
+    <div class="container">
+        <div class="row">
+        <div class="col-lg-6 align-self-center">
+            <div class="section-heading">
+            <h4>Say <em>Goodbye</em>  to Plant Woes</h4>
+            <img src="{% static 'fruit_disease_detection_app/assets/images/heading-line-dec.png' %}" alt="">
+            <img src="{% static 'fruit_disease_detection_app/assets/images/heading-line-dec.png' %}" alt="">
+            <p style = "font-size:18px; font-weight:500">Tired of fruitlessly searching "what's wrong with my plant"? Say goodbye to disappointment with FruitWise! Just snap a photo of the problem, and FruitWise provides a comprehensive diagnosis including details on the disease, its causes, treatment options, and preventive measures. It's like having a personal plant doctor in your pocket!</p>
+            
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="box-item">
+                    <h4><a href="#about" onclick = "openPopUp()">Application Instructions</a></h4>
+                    <p>Detailed and Accurate</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="box-item">
+                    <h4><a href="#services">Disease Recognition</a></h4>
+                    <p>Automated diagnosis</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="box-item">
+                    <h4><a href="#diseases">Disease Encyclopedia</a></h4>
+                    <p>Explore fruit ailments in detail</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="box-item">
+                    <h4><a href="#diseases">Questionnaire</a></h4>
+                    <p>Frequently Asked Questions</p>
+                    </div>
+                </div>
+            <div class="col-lg-12">
+                <p style = "font-size:16px; font-weight:400">Get in-depth insights into various fruit ailments in the "Disease Encyclopedia" section.</p>
+                <div class="gradient-button">
+                <a href="#services">Start Diagnosing  <i class="fa fa-arrow-right"></i></a>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="right-image">
+            <img src="{% static 'fruit_disease_detection_app/assets/images/back-image.png' %}" alt="">
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+<div class = "container">
+    <div class = "popup" id = "popup">
+        <h2>Application Instructions</h2>
+        <h3>To utilize the disease detection feature on FruitWise, follow these steps:</h3><br>
+        <p>1. Open the website and navigate to the disease detection section.</p>
+        <p>2. Choose the fruit from the available options among those listed with diseases.</p>
+        <p>3. Once selected, upload an image showing the affected part of the fruit plant.</p>
+        <p>4. Click on the submit button to initiate the disease detection process.</p>
+        <p>5. After the disease is detected, you can explore further details by visiting the disease encyclopedia section.</p>
+        <p>6. In the disease encyclopedia, you'll find product recommendations and preventive measures, aiding in understanding and addressing the plant's disease effectively.</p>
+        <button type="button" onclick = "closePopUp()">OK</button>
+    </div>
+    <div class="overlay" id="overlay"></div>
+</div>
+
+
+<div id = "diseases" class="services section">
+    <div class="container">
+        <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="section-heading  wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
+            <h4>Disease <em>Encyclopedia</em></h4>
+            <img src="{% static 'fruit_disease_detection_app/assets/images/heading-line-dec.png' %}" alt="this is a heading image">
+            <img src="{% static 'fruit_disease_detection_app/assets/images/heading-line-dec.png' %}" alt="this is a heading image">
+            <p style = "color:gray; margin-left:10px; margin-right:10px; font-size:18px; font-weight:600">Dive into a comprehensive classification of ailments, exploring their causes, symptoms, and effective treatments. Whether you're combating fungal infections, viral outbreaks, or other challenges, empower yourself with knowledge to nurture healthy, thriving fruit plants. Explore our curated resources to safeguard your orchard and maximize harvest yields.</p>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+        <div class="disease-item first-service">
+            {% comment %} <div class="icon"></div> {% endcomment %}
+            <h4 style = "color:#a30c0c">POMEGRANATE</h4>
+            <p>Pomegranates can be affected by various diseases that may impact their growth, fruit quality, and overall health.</p>
+            <div class="text-button">
+            <a href="{% url 'diseases_pomegranate' %}">Know More <i class="fa fa-arrow-right"></i></a>
+            </div>
+        </div>
+        </div>
+        <div class="col-lg-4">
+        <div class="disease-item second-service">
+            {% comment %} <div class="icon"></div> {% endcomment %}
+            <h4 style = "color:#e53b9e">DRAGON FRUIT</h4>
+            <p>Dragon Fruits can be affected by various diseases that may impact their growth, fruit quality, and overall health.</p>
+            <div class="text-button">
+            <a href="{% url 'diseases_dragonfruit' %}">Know More <i class="fa fa-arrow-right"></i></a>
+            </div>
+        </div>
+        </div>
+        <div class="col-lg-4">
+        <div class="disease-item third-service">
+            {% comment %} <div class="icon"></div> {% endcomment %}
+            <h4 style = "color:#FF6701">ORANGE</h4>
+            <p>Oranges can be affected by various diseases that may impact their growth, fruit quality, and overall health.</p>
+            <div class="text-button">
+            <a href="{% url 'diseases_orange' %}">Know More <i class="fa fa-arrow-right"></i></a>
+            </div>
+        </div>
+        </div>
+        <div style = "margin-top:20px;display:flex;justify-content:center;">
+            <div class="col-lg-4">
+                <div class="disease-item fourth-service">
+                    {% comment %} <div class="icon"></div> {% endcomment %}
+                    <h4 style = "color:#FF9D00">PAPAYA</h4>
+                    <p>Papayas can be affected by various diseases that may impact their growth, fruit quality, and overall health.</p>
+                    <div class="text-button">
+                    <a href="{% url 'diseases_papaya' %}">Know More <i class="fa fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4" style = "margin-left:20px;" >
+                <div class="disease-item fifth-service">
+                    {% comment %} <div class="icon"></div> {% endcomment %}
+                    <h4 style = "color:red">TOMATO</h4>  
+                    <p>Tomatoes can be affected by various diseases that may impact their growth, fruit quality, and overall health.</p>
+                    <div class="text-button">
+                    <a href="{% url 'diseases_tomato' %}"> Know More <i class="fa fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+
+<div id="clients" class="the-clients">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <div class="section-heading">
+                    <h4>Frequently <em>asked</em> questions</h4>
+                    <img src="{% static 'fruit_disease_detection_app/assets/images/heading-line-dec.png' %}" alt="">
+                    <img src="{% static 'fruit_disease_detection_app/assets/images/heading-line-dec.png' %}" alt="">
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class = "faq" style = "display:flex;justify-content:center;">
+    <div class="col-lg-7">
+        <div class="faq-item">
+            <div class = "faq-ques">
+                    <h4 style = "color:#0023aa">How often should fruit disease detection be performed?</h4>
+                    <p>The frequency of fruit disease detection depends on various factors, including the type of fruit, prevailing weather conditions, and the stage of crop growth. Generally, regular monitoring throughout the growing season is recommended to catch diseases early. Some growers may choose to conduct weekly or bi-weekly inspections during critical periods of fruit development.</p>
+            </div>
+            <div class = "faq-ques">
+                    <h4 style = "color:#0023aa">Can fruit disease detection technology be used for preventive measures?</h4>
+                    <p>Yes, fruit disease detection technology is invaluable for preventive measures. By detecting diseases early, growers can take proactive steps to prevent their spread, such as adjusting irrigation practices, improving air circulation, applying appropriate fungicides or bactericides preventively, and implementing sanitation measures in the orchard or field.</p>
+            </div>
+            <div class = "faq-ques">
+                    <h4 style = "color:#0023aa">Do I need to pay to access fruit disease detection services on your platform?</h4>
+                    <p>No, our platform is completely free to use. All you need to do is sign up for an account to gain access to our comprehensive fruit disease detection services. Enjoy hassle-free monitoring and protection for your crops without any cost involved.</p>
+            </div>
+            <div class = "faq-ques">
+                    <h4 style = "color:#0023aa">Which fruits can I detect diseases for on your platform?</h4>
+                    <p>Our platform offers disease detection services for a variety of fruits, including tomato, orange, papaya, dragon fruit, and pomegranate. Whether you're growing one or multiple types of these fruits, our system is equipped to help you monitor and manage diseases effectively.</p>
+            </div>
+            <div class = "faq-ques">
+                    <h4 style = "color:#0023aa">Is fruit disease detection technology easy to use for growers?</h4>
+                    <p>Yes, most fruit disease detection technologies are designed to be user-friendly and accessible to growers of all levels of expertise. Many systems offer intuitive interfaces and straightforward instructions, allowing growers to easily integrate disease detection into their regular farming practices.</p>
+            </div>
+            <div class = "faq-ques">
+                    <h4 style = "color:#0023aa">What types of diseases can be detected using this technology?</h4>
+                    <p>Fruit disease detection technology can identify a wide range of diseases that affect fruits, including fungal infections, bacterial diseases, viral infections, and other common ailments specific to each fruit type. Examples include citrus greening in oranges, bacterial blight in tomatoes, and powdery mildew in papayas.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer id="newsletter">
+<div class="container">
+    <div class="row">
+        {% comment %} <div class="col-lg-8 offset-lg-2">
+            <div class="section-heading">
+            <h4>It only takes 2 minutes!</h4>
+            </div>
+        </div>
+        <div class="col-lg-6 offset-lg-3">
+            <form id="search" action="#" method="GET">
+            <div class="row">
+                <div class="col-lg-6 col-sm-6">
+                <fieldset >
+                    <button type="submit" class="main-button">Provide Feedback <i class="fa fa-angle-right"></i></button>
+                </fieldset>
+                </div>
+            </div>
+            </form>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-lg-5">
+            <div class="footer-widget">
+            <h4>Contact Us</h4>
+            <p>Rio de Janeiro - RJ, 22795-008, Brazil</p>
+            <p><a href="#">010-020-0340</a></p>
+            <p><a href="#">info@company.co</a></p>
+            </div>
+        </div>
+        
+        <div class="col-lg-5">
+            <div class="footer-widget">
+            <h4>About Our Company</h4>
+            <div class="logo">
+                <img src="{% static 'fruit_disease_detection_app/assets/images/white-logo.png' %}" alt="">
+            </div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+            </div>
+        </div> {% endcomment %}
+    <div class="col-lg-12">
+        <div class="copyright-text">
+            <p style = "font-size: 18px; font-weight:500">Copyright © 2024 FruitWise - Your Fruit Wellness Partner. All Rights Reserved. </p>
+        </div>
+    </div>
+    </div>
+</div>
+</footer>
+
+<script>
+    let popup = document.getElementById("popup");
+
+    function openPopUp() {
+        popup.classList.add("open-popup");
+        overlay.classList.add("open-overlay");
+    }
+    function closePopUp() {
+        popup.classList.remove("open-popup");
+        overlay.classList.remove("open-overlay");
+    }
+</script>
+
+<!-- Scripts -->
+<script src="{% static 'fruit_disease_detection_app/vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/owl-carousel.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/animation.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/imagesloaded.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/popup.js' %}"></script>
+<script src="{% static 'fruit_disease_detection_app/assets/js/custom.js' %}"></script>
+</body>
+</html>
